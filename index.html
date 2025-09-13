@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="PEFT, Prompt Tuning, Manifold Mapping">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visual Fourier Prompt Tuning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="http://runjia.tech">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Visual Fourier Prompt Tuning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://runjia.tech">Runjia Zeng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Guangyan Sun<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Qifan Wang<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Tong Geng<sup>2,4</sup>,
+            </span>
+            <span class="author-block">
+              Sohail Dianat<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xiaotian Han<sup>5</sup>,
+            </span>
+            <span class="author-block">
+              Raghuveer Rao<sup>6</sup>,
+            </span>
+            <span class="author-block">
+              Xueling Zhang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Cheng Han<sup>7</sup>,
+            </span>
+            <span class="author-block">
+              Lifu Huang<sup>8</sup>,
+            </span>
+            <span class="author-block">
+              Dongfang Liu<sup>1†</sup>
+            </span><br><br>
+            </div>
+            <p>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Rochester Institute of Technology,</span>
+              <span class="author-block"><sup>2</sup>University of Rochester,</span><br>
+              <span class="author-block"><sup>3</sup>Meta AI,</span>
+              <span class="author-block"><sup>4</sup>Rice University,</span><br>
+              <span class="author-block"><sup>5</sup>Case Western Reserve University,</span>
+              <span class="author-block"><sup>6</sup>U.S. DEVCOM Army Research Laboratory,</span><br>
+              <span class="author-block"><sup>7</sup>University of Missouri - Kansas City,</span>
+              <span class="author-block"><sup>8</sup>UC Davis,</span><br>
+              <span class="author-block"><sup>†</sup>Corresponding author</span>
+            </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2509.00996"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2509.00996"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://recorder-v3.slideslive.com/?share=96649&s=ddeb9230-5258-4ce1-bcad-092710eb580f"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/runtsang/MEPT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+                  <!-- <span class="link-block">
+                    <a href="./static/images/VFPT.pptx"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fas fa-file-powerpoint"></i>
+                      </span>
+                      <span>Slides</span>
+                    </a> -->
+                  </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+       <!-- <img src="./static/images/title.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/> -->
+        <img src="./static/images/overview.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+      <h2 class="subtitle has-text-centered">
+        A simple yet powerful parameter-efficient visual prompt tuning approach.
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Considering deep neural networks as manifold mappers, the pretrain-then-fine-tune paradigm can be interpreted as a two-stage process: pretrain establishes a broad knowledge base, and fine-tune adjusts the model parameters to activate specific neural pathways to align with the target manifold. 
+            Although prior fine-tuning approaches demonstrate success, their rigid parameter space limits their ability to dynamically activate appropriate neural pathways, rendering them ill-equipped to adapt flexibly to the diverse and evolving data distributions. 
+          </p>
+          <p>
+            In light of this view, we propose a novel approach, Mixture of Expert Prompt Tuning (MEPT), as an effective and efficient manifold-mapping framework. 
+            MEPT leverages the Mixture of Experts architecture by integrating multiple prompt experts to adaptively learn diverse and non-stationary data distributions. 
+          </p>
+          <p>
+            Empirical evaluations demonstrate that MEPT outperforms several state-of-the-art parameter efficient baselines on SuperGLUE, achieving notable improvements in mean accuracy (e.g., 1.94%) while significantly reducing activated prompts by 79.25%. 
+            The effectiveness of MEPT is further supported by theoretical insights from manifold learning and validated through neural activation pathway visualization results. 
+            P.S. The video and slides are on the way!!
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://recorder-v3.slideslive.com/?share=96649&s=ddeb9230-5258-4ce1-bcad-092710eb580f"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/images/mept.jpg"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>
+        <!-- <img src="./static/images/1.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>
+        <img src="./static/images/2.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>
+        <img src="./static/images/3.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>      
+        <img src="./static/images/4.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>
+        <img src="./static/images/5.png"
+                   class="image is-fullwidth"
+                   alt="Interpolate start reference image."/>
+                    -->
+      </div>
+    </div>
+
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    If you find our work useful, please consider citing our paper: <br><br>
+
+    <pre><code>@inproceedings{zeng2025mept,
+  title={MEPT: Mixture of Expert Prompt Tuning as a Manifold Mapper},
+  author={Zeng, Runjia and Sun, Guangyan and Wang, Qifan and Geng, Tong and Dianat, Sohail and Han, Xiaotian and Rao, Raghuveer and Zhang, Xueling and Han, Cheng and Huang, Lifu and others},
+  booktitle={EMNLP},
+  year={2025}
+}
+}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/runtsang" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is constructed using the templet provided by <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Thanks for their effort. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
